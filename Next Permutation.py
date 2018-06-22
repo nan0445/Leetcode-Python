@@ -50,3 +50,29 @@ class Solution:
   
   
   ### Use sorted() instead of .sort()
+class Solution:
+    def nextPermutation(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: void Do not return anything, modify nums in-place instead.
+        """
+        if len(nums)<=1: return
+        if nums[-1]>nums[-2]:
+            nums[-1], nums[-2] = nums[-2], nums[-1]
+            return
+        for i in range(len(nums)-2,-1,-1):
+            if i>0 and nums[i]>nums[i-1] and nums[i]>=nums[i+1]:
+                ind = i-1
+                for j in range(i+1,len(nums)):
+                    if nums[ind]>=nums[j]:
+                        nums[j-1], nums[ind] = nums[ind], nums[j-1]
+                        nums[ind+1:] = nums[ind+1:][::-1]
+                        return
+                nums[ind], nums[-1] = nums[-1], nums[ind]
+                nums[ind+1:] = nums[ind+1:][::-1]
+                return    
+                    
+            elif i==0 and nums[i]>=nums[i+1]:
+                nums.reverse()
+                return
+            
