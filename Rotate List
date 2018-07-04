@@ -1,0 +1,28 @@
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+
+class Solution:
+    def rotateRight(self, head, k):
+        """
+        :type head: ListNode
+        :type k: int
+        :rtype: ListNode
+        """
+        dummy = ans = ListNode(0)
+        temp = []
+        while head:
+            temp.append(head.val)
+            head = head.next
+        if not temp: return ans.next
+        k %= len(temp)
+        for _ in range(k):
+            t = temp.pop()
+            temp.insert(0,t)
+        for v in temp:
+            dummy.next = ListNode(v)
+            dummy = dummy.next
+        return ans.next
+######### OR find the stop point and only change from that point ###########
