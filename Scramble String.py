@@ -11,3 +11,4 @@ class Solution:
             if (self.isScramble(s1[:i],s2[:i]) and self.isScramble(s1[i:],s2[i:])) or (self.isScramble(s1[:i],s2[len(s1)-i:]) and self.isScramble(s1[i:],s2[:len(s1)-i])): return True
         return False
     
+### This is a very stupid question because it is very unclear about the description! #######
