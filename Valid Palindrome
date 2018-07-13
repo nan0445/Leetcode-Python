@@ -1,0 +1,22 @@
+class Solution:
+    def isPalindrome(self, s):
+        """
+        :type s: str
+        :rtype: bool
+        """
+        s = s.strip().lower()
+        i,j = 0, len(s)-1
+        while i<j:
+            while not s[i].isalpha() and i<j and not s[i].isdigit():
+                i += 1
+            while not s[j].isalpha() and i<j and not s[j].isdigit():
+                j -= 1
+            
+            if s[i]!=s[j]: return False
+            i += 1
+            j -= 1
+        return True
+########################################
+### use .isalnum() method would be the same as .isdigit() and .isalpha()
+##########################################
+#### OR use re.sub('[^A-Za-z0-9]','',s).lower() to get rid of all the none alphanumber char
