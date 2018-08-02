@@ -1,0 +1,12 @@
+class Solution:
+    def isPowerOfFour(self, num):
+        """
+        :type num: int
+        :rtype: bool
+        """
+        if num<=0: return False
+        while num>1:
+            num, x = divmod(num, 4)
+            if x!=0: return False
+        return True
+        
