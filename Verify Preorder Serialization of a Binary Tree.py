@@ -23,3 +23,20 @@ class Solution:
                 count.pop()
         if not stack: return True
         else: return False
+###################################################
+######## This is very smart!! #####################
+class Solution:
+    def isValidSerialization(self, preorder):
+        """
+        :type preorder: str
+        :rtype: bool
+        """
+        exp = 1
+        preorder = preorder.split(',')
+        for p in preorder:
+            exp -= 1
+            if(exp < 0):
+                return False
+            if(p != '#'):
+                exp += 2
+        return exp == 0
